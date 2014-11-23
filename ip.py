@@ -17,7 +17,7 @@ class CheckIPVersion(webapp2.RequestHandler):
             self.response.write(isinstance(ip,ipaddr.IPv6Address))
 
 class RedirectToHTTPS(webapp2.RequestHandler):
-    def get(self):
+    def get(self, str):
         self.redirect("https://minivi-ip-echo.appspot.com/")
         
 application = webapp2.WSGIApplication([
