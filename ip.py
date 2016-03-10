@@ -19,10 +19,18 @@ class CheckIPVersion(webapp2.RequestHandler):
 class RedirectToHTTPS(webapp2.RequestHandler):
     def get(self, str):
         self.redirect("https://minivi-ip-echo.appspot.com/")
-        
+
+class LetsEncryptHandler(webapp2.RequestHandler):
+    def get(self, challenge):
+        self.response.headers['Content-Type'] = 'text/plain'
+        responses = {
+                    'ZF7m4BQD8lcXWRHlPF-gC2IqwLBsh6PVwxDcoWsxVx0': '-6tKHL8U8EMsqcdR-VVBfXLMb2iqPOysH0Y2xWlkJ7E',
+                }
+        self.response.write(responses.get(challenge, ''))
+
 application = webapp2.WSGIApplication([
     ('/', Default),
     (r'/isipv(4|6)', CheckIPVersion),
     (r'/(secure|tls|https)', RedirectToHTTPS),
+    ('/.well-known/acme-challenge/([\w-]+)', LetsEncryptHandler),
 ])
-
