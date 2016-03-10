@@ -24,7 +24,7 @@ class LetsEncryptHandler(webapp2.RequestHandler):
     def get(self, challenge):
         self.response.headers['Content-Type'] = 'text/plain'
         responses = {
-                    'ZF7m4BQD8lcXWRHlPF-gC2IqwLBsh6PVwxDcoWsxVx0': '-6tKHL8U8EMsqcdR-VVBfXLMb2iqPOysH0Y2xWlkJ7E',
+                    'wf0oX-jOgtv5VHwWvQ4RdMAyHqQTKVaxe4lVdtNe3xg': 'wf0oX-jOgtv5VHwWvQ4RdMAyHqQTKVaxe4lVdtNe3xg.-6tKHL8U8EMsqcdR-VVBfXLMb2iqPOysH0Y2xWlkJ7E',
                 }
         self.response.write(responses.get(challenge, ''))
 
